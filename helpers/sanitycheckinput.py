@@ -197,6 +197,7 @@ def check_actions_dict(actions, req_id):
                     logging.error(("JavaScript snippets in eval should be " +
                                    "strings for req_id %s") % req_id)
 
+
 if __name__== '__main__':
     description = ('This script sanity checks input files for crawler.')
     parser = argparse.ArgumentParser(
@@ -235,9 +236,9 @@ if __name__== '__main__':
             exit(1)
         try:
             obj = json.load(fh)
-        except:
-            logging.error("Cannot load JSON for file: %s. Exception: %s" 
-                          % (f, traceback.print_exc()))
+        except Exception, e:
+            logging.critical("Cannot load JSON for file: %s. Exception: %s" 
+                          % (f, e.message))
             fh.close()
             exit(1)
         fh.close()

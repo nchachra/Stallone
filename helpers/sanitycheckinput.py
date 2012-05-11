@@ -11,7 +11,7 @@ Author: nchachra@cs.ucsd.edu
 """
 
 import argparse
-import json
+import simplejson as json
 import logging
 import os
 import traceback

@@ -1,0 +1,4 @@
+[
+    ["hostip1", "port1", "http"],
+    ["hostip2", "port2", "socks"]
+]

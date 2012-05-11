@@ -1,0 +1,35 @@
+{
+    "1": {
+            "url" : "http://www.bing.com",
+            "features": {
+                            "screenshot": "out1/img.png",
+                            "dom": "out2/dom.html",
+                            "visitchain": "out1/chain.json"
+                        }
+        },
+    "2": {
+            "url" : "http://www.google.com",
+            "setup": {
+                        "ffprefs": [
+                                    ["somepref", "somevalue", "sometype"]
+                                   ],
+                        "headers": {
+                                        "header": "someval"
+                                   },
+                        "proxy": ["ip", "port", "type"]
+                    },
+            "features": {
+                            "screenshot": "screenshot_file",
+                            "dom": "dom_file"
+                        },
+            "actions": {
+                        "eval": ["snippet1;", "snippet2"]
+                    }
+        },
+    "3":{
+        "url": "http://www.ucsd.edu",
+        "features": "all"
+        
+    }
+
+}

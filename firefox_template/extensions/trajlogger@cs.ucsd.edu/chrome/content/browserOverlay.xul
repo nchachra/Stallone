@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<overlay id="trajLoggerOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <!-- this one must be first! -->
+    <script src="chrome://trajlogger/content/browserOverlay.js"/>
+
+    <!-- common stuff like logging -->
+    <script src="chrome://trajlogger/content/lib.js"/>
+    <script src="chrome://trajlogger/content/commandsocket.js"/>
+    <script src="chrome://trajlogger/content/webprogress.js"/>
+    <script src="chrome://trajlogger/content/httpobserver.js"/>
+    <script src="chrome://trajlogger/content/screenshooter.js"/>
+    <script src="chrome://trajlogger/content/pagerank.js"/>
+
+    <script type="application/x-javascript">
+        window.addEventListener("load", function() {
+                                            TrajLogging.LIB.init();
+                                        }, true);
+        window.addEventListener("load",function() { 
+                                            TrajLogging.Command.init(); 
+                                        } , true);
+        window.addEventListener("load",function() { 
+                                            TrajLogging.WebProgress.init();
+                                        },true);
+        window.addEventListener("load", function() { 
+                                            TrajLogging.HTTPObserver.init();
+                                        }, true);
+        /*
+    	window.addEventListener("unload",function(){ 
+    	                          TrajLogging.Command.uninit(); },true);
+	    window.addEventListener("unload",function(){ 
+	                              TrajLogging.WebProgress.uninit(); },true);
+	    window.addEventListener('unload',function(){ 
+	                              TrajLogging.HTTPObserver.uninit(); }, true);
+	    */
+    </script>
+</overlay>

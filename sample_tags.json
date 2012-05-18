@@ -1,0 +1,7 @@
+{
+    "html_tag": {
+                    "threshold": 1,
+                    "regexes": ["(html)"]
+                }
+
+}

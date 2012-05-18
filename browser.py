@@ -1,4 +1,4 @@
-"""'''Provides browser controls for starting and stopping. Browser is the base 
+'''Provides browser controls for starting and stopping. Browser is the base 
 class.
 '''
 

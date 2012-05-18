@@ -292,7 +292,7 @@ class FirefoxCrawlerProcess(CrawlerProcess):
             if not vc_fname:
                 vc_fname = req_id + ".json"
             if vc_path:
-                vc_fname = os.path.join(vc_path, fname)
+                vc_fname = os.path.join(vc_path, vc_fname)
                 
             headers = self.extension_inst.headers()
             redirects = self.extension_inst.redirects()

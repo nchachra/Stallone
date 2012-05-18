@@ -284,13 +284,13 @@ class FirefoxCrawlerProcess(CrawlerProcess):
                     tags[tag_name] = match_groups
                         
         if all_flag or features.has_key("visitchain"):
-            (vc_path, fname) = self._feature_destination(
+            (vc_path, vc_fname) = self._feature_destination(
                                             'json', features, 'visitchain', 
                                             crawlglobs.visit_chain_dir)
             # Unlike screenshot and dom, we default to naming the visit chain
             #    file with the job id.
-            if not fname:
-                fname = req_id + ".json"
+            if not vc_fname:
+                vc_fname = req_id + ".json"
             if vc_path:
                 vc_fname = os.path.join(vc_path, fname)
                 

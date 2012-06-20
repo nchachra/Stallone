@@ -418,25 +418,34 @@ TrajLogging.LIB = {
 
             case "GET_HTML":
                  // Returns HTML string. 
-                 if (this.htmlString == '' && 
-                     content.document.documentElement.innerHTML) {
-                    var raw = '<html>';
-                    var html = content.document.documentElement.innerHTML;
-                    raw += html;
-                    raw += '</html>';
+                 if (this.htmlString == '') {
+                    var serializer = new XMLSerializer();
+                    this.htmlString = serializer.serializeToString(
+                                                   content.document);
                     var frames = content.document
                                         .getElementsByTagName('frame');
                     var len = frames.length;
                     for(var i=0; i < len; i++) {
-                        frameHtml = frames[i].contentDocument
-                                              .documentElement.innerHTML;
+                        var srcVal = serializer.serializeToString(frames[i]
+                                                                  .src)
                         //get and add source name.
-                        srcVal = frames[i].src;
-                        raw += '\n\n\n <!--Added for Trajectory. Src: ' + 
-                               srcVal + '--> \n\n\n';
-                        raw += frameHtml;
+                        this.htmlString += '\n\n\n ' +
+                                        '<!--Added for Trajectory. Src: ' + 
+                                        srcVal + '--> \n\n\n';
                     }
-                    this.htmlString = raw;
+                    var iframes = content.document
+                                        .getElementsByTagName('iframe');
+                    
+                    len = iframes.length;
+                    for(var i=0; i < len; i++) {
+                        var srcVal = iframes[i].contentDocument
+                                                .documentElement
+                                                .innerHTML
+                        //get and add source name.
+                        this.htmlString +=  '\n\n\n ' + 
+                                            '<!--Added by Stallone. Src: ' + 
+                                            '--> \n\n\n' + srcVal;
+                    }
                  }
                  if (!this.htmlString) {
                         var errorMsg = "Document has no inner HTML.";
